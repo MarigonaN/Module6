@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Marigona",
+        "surname": "Nuhija",
+        "email": "marigonanuhija@gmail.com",
+        "dateOfBirth": "11.05.1996",
+        "id": "1"
+    },
+    {
+        "name": "Alina",
+        "surname": "Spahiu",
+        "email": "alinaspahiu@gmail.com",
+        "dateOfBirth": "09.06.1993",
+        "id": "2"
+    },
+    {
+        "name": "Elona",
+        "surname": "Nuhija",
+        "email": "elonanuhijai@gmail.com",
+        "dateOfBirth": "24.11.1997",
+        "id": "3"
+    },
+    {
+        "name": "John",
+        "surname": "Doe",
+        "email": "JohnDoe@gmail.com",
+        "dateOfBirth": "01.01.1991",
+        "id": "4"
+    }
+  
+]
