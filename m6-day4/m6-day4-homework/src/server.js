@@ -1,5 +1,5 @@
 const express = require("express")
-const cors = require("cors")
+// const cors = require("cors")
 const path = require("path")
 const studentsRouter = require("./services/students")
 const mongoose = require("mongoose")
@@ -9,8 +9,7 @@ const server = express()
 
 server.use(express.json())
 
-server.use(cors())
-
+// server.use(cors())
 
 
 server.use("/students", studentsRouter)
