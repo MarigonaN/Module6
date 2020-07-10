@@ -2,10 +2,13 @@ const express = require('express')
 const studentModel = require('./schema')
 
 const studentsRouter = express.Router()
-
+const { sort, skip, limit } = req.query
 studentsRouter.get('/', async (req, res, next) => {
     try {
-        const studentsList = await studentModel.find(req.query)
+        const studentsList = await studentModel.find(req.query, { email: 1 })
+        .skip(parseInt(skip))
+        .limit(parse(limit))
+        .sort({ [sort]: 1 })
         res.send(studentsList)
     } catch (error) {
         next(error)
