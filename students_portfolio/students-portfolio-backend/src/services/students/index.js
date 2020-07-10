@@ -1,14 +1,22 @@
 const express = require('express')
 const studentModel = require('./schema')
+const qToM = require('query-to-mongo')
 
 const studentsRouter = express.Router()
-const { sort, skip, limit } = req.query
+
+
 studentsRouter.get('/', async (req, res, next) => {
+    const parsedQuery = qToM(req.query)
+    console.log(parsedQuery)
     try {
-        const studentsList = await studentModel.find(req.query, { email: 1 })
-        .skip(parseInt(skip))
-        .limit(parse(limit))
-        .sort({ [sort]: 1 })
+        const studentsList = await studentModel.find(
+            parsedQuery.criteria,
+            parsedQuery.options.fields
+        )
+        .sort(parsedQuery.options.sort)
+        .skip(parsedQuery.options.skip)
+        .limit(parsedQuery.options.limit)
+      
         res.send(studentsList)
     } catch (error) {
         next(error)
