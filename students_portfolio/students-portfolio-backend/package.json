@@ -16,7 +16,8 @@
     "express-list-endpoints": "^4.0.1",
     "fs-extra": "^9.0.1",
     "mongoose": "^5.9.22",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "validator": "^13.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
