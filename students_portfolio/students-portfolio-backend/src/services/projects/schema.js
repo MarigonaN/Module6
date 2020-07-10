@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 const v = require("validator")
 
 const projectSchema = new Schema({
@@ -7,19 +7,18 @@ const projectSchema = new Schema({
         required: true
     },
     description: String,
-title: {
-    type: String,
-    required: true,
-},
-authors: [{
-    type: Schema.Types.ObjectId, ref: "Author",
-},
-],
-
-
-},
-{ _id: false 
+    title: {
+        type: String,
+        required: true,
     },
+    authors: [{
+        type: Schema.Types.ObjectId, ref: "Author",
+    },
+    ],
+
+
+},
+    { _id: false},
 )
 
 const projectModel = model("Project", projectSchema)

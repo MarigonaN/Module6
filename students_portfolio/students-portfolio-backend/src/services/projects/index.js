@@ -6,6 +6,8 @@ const projectsRouter = express.Router()
 
 
 projectsRouter.get('/', async (req, res, next) => {
+    const parsedQuery = qToM(req.query)
+    console.log(parsedQuery)
     try {
         const projectsList = await projectModel.find(req.query).populate("authors")
       
@@ -20,7 +22,7 @@ projectsRouter.get('/', async (req, res, next) => {
 
 projectsRouter.get('/:id', async (req, res, next) => {
     try {
-        const project = await projectModel.findOne( req.params.id)
+        const project = await projectModel.findOne( {_id: req.params.id})
         if (project) {
             res.send(project)
         } else {
