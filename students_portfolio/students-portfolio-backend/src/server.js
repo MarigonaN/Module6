@@ -4,6 +4,8 @@ const listEndpoints = require('express-list-endpoints')
 const mongoose = require('mongoose')
 
 const studentsRoutes = require('./services/students')
+const projectsRoutes = require('./services/projects')
+
 
 
 const {
@@ -19,7 +21,7 @@ server.use(express.json())
 const port = process.env.PORT || 3006
 
 server.use('/students', studentsRoutes)
-// server.use('/books', booksRoutes)
+server.use('/projects', projectsRoutes)
 
 server.use(badRequestHandler)
 server.use(notFoundHandler)

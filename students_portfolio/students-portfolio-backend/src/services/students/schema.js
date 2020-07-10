@@ -2,6 +2,7 @@ const {Schema, model} = require('mongoose')
 const v = require("validator")
 
 const studentSchema = new Schema({
+
 name: {
     type: String,
     required: true,
