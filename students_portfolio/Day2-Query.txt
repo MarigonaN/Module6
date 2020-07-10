@@ -1,0 +1,21 @@
+1.  { $and: [ { isActive: { $ne: false } }, { isActive: { $exists: true } } ] }
+	res:	51
+
+2.  { age: { $gt: 26 } }
+	res: 	Displaying documents 1 - 20 of 54
+
+3. {$and: [{"age": {$gt: 26}}, {"age": {$lte: 30}}]}
+	res:	 19
+
+4.   { eyeColor: { $in: [ 'brown', 'blue' ] } }
+	res: 	66
+
+5.  { eyeColor: { $ne: 'green' } }
+	res:	 66
+
+6.  { eyeColor: { $nin: [ 'blue', 'green' ] } }
+	res: 	 35
+
+
+
+
