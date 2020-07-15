@@ -19,4 +19,4 @@ server.use("/students", studentRouter)
 server.use("/projects", projectRouter)
 
 console.log(listEndpoints(server))
-server.listen(process.env.PORT || 3456, () => console.log("Running on ", process.env.PORT || 3456))
+server.listen(process.env.PORT || 3456, () => console.log("Running on port", process.env.PORT || 3456))

@@ -11,7 +11,7 @@ studentRouter.get("/", async(req, res)=>{
 })
 
 studentRouter.get("/:id", async (req, res)=>{
-    const response = await db.query('SELECT _id, firstname, surname, email, dateOfBirth FROM "Students" WHERE _id= $1', 
+    const response = await db.query('SELECT _id, firstname, surname, email, "dateOfBirth" FROM "Students" WHERE _id= $1', 
                                                                                         [ req.params.id ])
 
     if (response.rowCount === 0) 
@@ -28,7 +28,7 @@ studentRouter.post("/checkEmail", async(req, res)=>{
         const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
-                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfbirth ])
+                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfBirth ])
         res.send(response.rows)
     }else{
         
@@ -38,10 +38,10 @@ studentRouter.post("/checkEmail", async(req, res)=>{
 })
 
 studentRouter.post("/", async (req, res)=> {
-    const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
+    const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, "dateOfBirth") 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
-                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfbirth ])
+                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfBirth ])
     
   
     
@@ -61,7 +61,7 @@ studentRouter.put("/:id", async (req, res)=> {
             params.push(req.body[bodyParamName]) 
         }
 
-        params.push(req.params.asin) //push the asin into the array
+        params.push(req.params.id) //push the asin into the array
         query += " WHERE _id = $" + (params.length) + " RETURNING *" 
         console.log(query)
 
