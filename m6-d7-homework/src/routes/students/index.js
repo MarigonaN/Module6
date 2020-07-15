@@ -28,7 +28,7 @@ studentRouter.post("/checkEmail", async(req, res)=>{
         const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
-                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateofbirth ])
+                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfbirth ])
         res.send(response.rows)
     }else{
         
@@ -41,7 +41,7 @@ studentRouter.post("/", async (req, res)=> {
     const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
-                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateofbirth ])
+                                    [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfbirth ])
     
   
     
