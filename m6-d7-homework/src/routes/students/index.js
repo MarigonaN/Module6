@@ -6,12 +6,12 @@ const studentRouter = express.Router();
 
 studentRouter.get("/", async(req, res)=>{
     
-    const response = await db.query('SELECT * FROM "students"')
+    const response = await db.query('SELECT * FROM "Students"')
     res.send(response.rows)
 })
 
 studentRouter.get("/:id", async (req, res)=>{
-    const response = await db.query('SELECT _id, firstname, surname, email, dateOfBirth FROM "students" WHERE _id= $1', 
+    const response = await db.query('SELECT _id, firstname, surname, email, dateOfBirth FROM "Students" WHERE _id= $1', 
                                                                                         [ req.params.id ])
 
     if (response.rowCount === 0) 
@@ -21,11 +21,11 @@ studentRouter.get("/:id", async (req, res)=>{
 })
 
 studentRouter.post("/checkEmail", async(req, res)=>{
-    const checkEmail = await db.query(`SELECT _id, firstname, surname, email, dateOfBirth FROM "students" WHERE email= $1`,[req.body.email])
+    const checkEmail = await db.query(`SELECT _id, firstname, surname, email, dateOfBirth FROM "Students" WHERE email= $1`,[req.body.email])
     
     if(checkEmail.rowCount===0){
 
-        const response = await db.query(`INSERT INTO "students" (firstname, surname, email, dateOfBirth) 
+        const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
                                     [ req.body.firstname, req.body.surname, req.body.email, req.body.dateofbirth ])
@@ -38,7 +38,7 @@ studentRouter.post("/checkEmail", async(req, res)=>{
 })
 
 studentRouter.post("/", async (req, res)=> {
-    const response = await db.query(`INSERT INTO "students" (firstname, surname, email, dateOfBirth) 
+    const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
                                     [ req.body.firstname, req.body.surname, req.body.email, req.body.dateofbirth ])
@@ -52,7 +52,7 @@ studentRouter.post("/", async (req, res)=> {
 studentRouter.put("/:id", async (req, res)=> {
     try {
         let params = []
-        let query = 'UPDATE "students" SET '
+        let query = 'UPDATE "Students" SET '
         for (bodyParamName in req.body) {
             query += 
                 (params.length > 0 ? ", " : '') + 
@@ -80,7 +80,7 @@ studentRouter.put("/:id", async (req, res)=> {
 })
 
 studentRouter.delete("/:id", async (req, res) => {
-    const response = await db.query(`DELETE FROM "students" WHERE _id = $1`, [ req.params.id ])
+    const response = await db.query(`DELETE FROM "Students" WHERE _id = $1`, [ req.params.id ])
 
     if (response.rowCount === 0)
         return res.status(404).send("Not Found")
