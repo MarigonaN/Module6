@@ -10,7 +10,7 @@ class StudentList extends Component {
         return(
             <Container className="my-5">
                 <Row>
-                    {this.state.students.slice(0,30).map(x => <StudentListItem key={x.asin} item={x} />)}
+                    {this.state.students.slice(0,30).map(x => <StudentListItem key={x.id} item={x} />)}
                 </Row>
             </Container>
         )

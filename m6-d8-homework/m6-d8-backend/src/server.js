@@ -15,7 +15,7 @@ server.get("/", (req, res)=> {
     res.send("The server is running!")
 })
 
-server.use("/students", studentRouter)
+server.use("/Students", studentRouter)
 
 
 console.log(listEndpoints(server))
