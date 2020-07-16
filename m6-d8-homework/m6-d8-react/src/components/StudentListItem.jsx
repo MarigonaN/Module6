@@ -13,7 +13,7 @@ class StudentListItem extends Component {
                         <Card.Text>
                            {surname} - {email} $
                     </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="info">Go somewhere</Button>
                     </Card.Body>
                 </Card>
 

@@ -28,7 +28,7 @@ studentRouter.get("/", async(req, res)=>{
             query += ` AND ${queryParam} = $${params.length} `
     }
 
-    query += " ORDER BY Name " + order 
+    query += " ORDER BY _id " + order 
 
     params.push (limit)
     query += ` LIMIT $${params.length} `

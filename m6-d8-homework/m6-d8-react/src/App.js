@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello Students!</h1>
+        <h1 className="display-1">Students</h1>
         <StudentList students={this.state.students} />
       </div>
     )

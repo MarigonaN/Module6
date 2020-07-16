@@ -8,19 +8,19 @@ class StudentList extends Component {
       }
     render (){
         return(
-            <Container className="my-5">
+            <Container >
                 <Row>
-                    {this.state.students.slice(0,30).map(x => <StudentListItem key={x.id} item={x} />)}
+                    {this.state.students.slice(1, 30).map(x => <StudentListItem key={x._id} item={x} />)}
                 </Row>
             </Container>
         )
     }
     componentDidMount = async ()=>{
-        const res = await fetch("http://localhost:3333/books")
+        const res = await fetch("http://localhost:3333/Students")
        
         const students = await res.json()
         this.setState({
-          students: students.rows        })
+          students: students      })
       }
 }
 
