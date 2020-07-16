@@ -21,11 +21,11 @@ studentRouter.get("/:id", async (req, res)=>{
 })
 
 studentRouter.post("/checkEmail", async(req, res)=>{
-    const checkEmail = await db.query(`SELECT _id, firstname, surname, email, dateOfBirth FROM "Students" WHERE email= $1`,[req.body.email])
+    const checkEmail = await db.query(`SELECT _id, firstname, surname, email, "dateOfBirth" FROM "Students" WHERE email= $1`,[req.body.email])
     
     if(checkEmail.rowCount===0){
 
-        const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, dateOfBirth) 
+        const response = await db.query(`INSERT INTO "Students" (firstname, surname, email, "dateOfBirth") 
                                      Values ($1, $2, $3, $4)
                                      RETURNING *`, 
                                     [ req.body.firstname, req.body.surname, req.body.email, req.body.dateOfBirth ])
