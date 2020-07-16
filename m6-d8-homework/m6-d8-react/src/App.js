@@ -17,7 +17,7 @@ export default class App extends Component {
   }
   
   componentDidMount = async ()=>{
-    const res = await fetch("http://localhost:3333/students")
+    const res = await fetch("http://localhost:3333/Students")
  
     const students = await res.json()
     this.setState({
